@@ -45,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Eksekusi query
     if ($stmt->execute()) {
-        echo "Operasi **" . $operator . "** berhasil!<br>";
-        echo "Hasil: **" . $angka1 . " " . $operator . " " . $angka2 . " = " . $hasil . "**<br>";
+        echo "Operasi " . $operator . " berhasil!<br>";
+        echo "Hasil: " . $angka1 . " " . $operator . " " . $angka2 . " = " . $hasil . "<br>";
         echo "Data berhasil disimpan ke database.";
     } else {
         echo "Error: " . $stmt->error;
