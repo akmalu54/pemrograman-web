@@ -29,6 +29,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         case '-':
             $hasil = $angka1 - $angka2;
             break;
+        case 'x':
+            $hasil = $angka1 * $angka2;
+            break;
+        case '/':
+            $hasil = $angka1 / $angka2;
+            break;
         default:
             echo "Operator tidak valid!";
             exit; // Hentikan eksekusi jika operator tidak valid
