@@ -1,16 +1,29 @@
 <?php
+// Tautan ke CSS
+echo '<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Hasil Perhitungan</title>
+    <link rel="stylesheet" href="css/style_proses.css"> 
+</head>
+<body>
+    <div class="container">';
+
 // Pengaturan Koneksi Database XAMPP
 $servername = "localhost";
-$username = "root"; // Username default XAMPP
-$password = "";     // Password default XAMPP
-$dbname = "db_kalkulator"; // Ganti jika nama database berbeda
+$username = "root"; 
+$password = "";     
+$dbname = "db_kalkulator"; 
 
 // Buat Koneksi
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Cek Koneksi
 if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
+    echo '<p class="error">Koneksi gagal: ' . $conn->connect_error . '</p>';
+    echo '</div></body></html>';
+    exit;
 }
 
 // Cek apakah data form telah dikirim melalui POST
@@ -30,34 +43,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $hasil = $angka1 - $angka2;
             break;
         default:
-            echo "Operator tidak valid!";
-            exit; // Hentikan eksekusi jika operator tidak valid
+            echo '<p class="error">Operator tidak valid!</p>';
+            $conn->close();
+            echo '</div></body></html>';
+            exit;
     }
 
-    // Siapkan query INSERT menggunakan Prepared Statements (Penting untuk keamanan!)
+    // Siapkan query INSERT menggunakan Prepared Statements
     $sql = "INSERT INTO perhitungan (angka1, operator, angka2, hasil) VALUES (?, ?, ?, ?)";
     
     // Inisialisasi Prepared Statement
     $stmt = $conn->prepare($sql);
     
-    // Bind parameter (i=integer, s=string). Di sini: 3 integer, 1 string
+    // Bind parameter
     $stmt->bind_param("isii", $angka1, $operator, $angka2, $hasil);
 
     // Eksekusi query
     if ($stmt->execute()) {
-        echo "Operasi " . $operator . " berhasil!<br>";
-        echo "Hasil: " . $angka1 . " " . $operator . " " . $angka2 . " = " . $hasil . "<br>";
-        echo "Data berhasil disimpan ke database.";
+        echo '<div class="result-box success">';
+        echo '<h3>✅ Operasi Berhasil!</h3>';
+        echo '<p class="calculation">' . $angka1 . ' ' . $operator . ' ' . $angka2 . ' = <strong>' . $hasil . '</strong></p>';
+        echo '<p class="message">Data berhasil disimpan ke database.</p>';
+        echo '</div>';
     } else {
-        echo "Error: " . $stmt->error;
+        echo '<div class="result-box error">';
+        echo '<h3>❌ Gagal Menyimpan Data</h3>';
+        echo '<p class="message">Error: ' . $stmt->error . '</p>';
+        echo '</div>';
     }
 
     // Tutup statement
     $stmt->close();
 } else {
-    echo "Akses tidak sah.";
+    echo '<p class="error">Akses tidak sah. Silakan kembali ke halaman input.</p>';
 }
 
 // Tutup koneksi database
 $conn->close();
+
+echo '<a href="index.php" class="button-back">Kembali ke Kalkulator</a>';
+echo '</div></body></html>';
 ?>

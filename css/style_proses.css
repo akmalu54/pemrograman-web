@@ -1,0 +1,80 @@
+/* style_proses.css - Styling untuk Halaman Hasil (proses.php) */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Latar belakang sangat terang */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Styling Kotak Hasil */
+.result-box {
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+}
+
+/* Styling untuk Hasil Sukses */
+.result-box.success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+/* Styling untuk Hasil Error/Gagal */
+.result-box.error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* Styling Judul Hasil */
+h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+/* Styling Perhitungan */
+.calculation {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 15px 0;
+    color: #007bff; /* Warna biru untuk hasil utama */
+}
+
+/* Styling Pesan Status */
+.message {
+    font-size: 1.1em;
+    margin-bottom: 0;
+}
+
+/* Styling Tombol Kembali */
+.button-back {
+    display: inline-block;
+    background-color: #6c757d; /* Abu-abu untuk tombol navigasi */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.button-back:hover {
+    background-color: #5a6268;
+}
