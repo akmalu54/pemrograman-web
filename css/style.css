@@ -1,0 +1,66 @@
+/* style.css */
+
+/* Mengatur font dan background dasar */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6; /* Warna latar belakang lembut */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Styling container utama/form */
+form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+/* Styling label dan input/select */
+label {
+    display: block; /* Membuat label berada di baris sendiri */
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+}
+
+input[type="number"], 
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; /* Padding dan border tidak menambah lebar total */
+    font-size: 16px;
+}
+
+/* Styling tombol submit */
+input[type="submit"] {
+    background-color: #007bff; /* Warna biru utama */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 17px;
+    width: 100%;
+    transition: background-color 0.3s ease; /* Efek transisi halus */
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3; /* Warna lebih gelap saat di-hover */
+}
